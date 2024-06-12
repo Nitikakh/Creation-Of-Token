@@ -1,0 +1,31 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.20;
+
+contract Mycontract {
+  
+  string public name = "mycoin";     // public variables 
+  string public symbol = "btc";      // public variables 
+  uint public totalSupply;           // public variables
+
+  mapping(address => uint) public account;                  // mapping variable 
+
+  function mint(address reciever, uint value) public {      // mint function
+    totalSupply += value; 
+    account[reciever] += value; 
+  }
+  function burn(uint amount) public {                       // burn function
+  
+    uint burnamount;
+    if (amount == 0) {
+      burnamount = account[msg.sender];
+    } else 
+    {
+      burnamount = amount;
+    }
+ 
+    totalSupply -= burnamount;                 // Reduce the total supply by the value burned
+
+    account[msg.sender] -= burnamount; 
+  }
+}
+ 
