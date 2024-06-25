@@ -32,13 +32,13 @@ contract MyToken {
     // mint function
     function mint(address addr, uint256 _value) public {
         totalSupply += _value;
-        balance[addr] += _value;
+        balance[addr] += _value;                                  //increased balance
     }
 
     // burn function
     function burn(address addr, uint256 _value) public {
         require(balance[addr] >= _value, "Insufficient balance to burn");
         totalSupply -= _value;
-        balance[addr] -= _value;
+        balance[addr] -= _value;                                                //decreased balance
     }
 }
